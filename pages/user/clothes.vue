@@ -9,6 +9,7 @@
 					应用风格
 				</view>
 				<view class="action">
+					<button class="cu-btn round bg-blue" @tap="save()">保存</button>
 				</view>
 			</view>
 		</view>
@@ -105,6 +106,7 @@
 				CustomBar: this.CustomBar,
 				NavBar:this.StatusBar +  this.CustomBar,
 				AppStyle:this.$store.state.AppStyle,
+
 				
 			}
 		},
@@ -118,7 +120,7 @@
 				
 			}
 			// #ifdef APP-PLUS
-			plus.navigator.setStatusBarStyle("dark")
+			//plus.navigator.setStatusBarStyle("dark")
 			// #endif
 			
 		},
@@ -142,12 +144,34 @@
 				var that = this;
 				that.AppStyle = style;
 				// that.$store.state.AppStyle = style;
+				
+			},
+			save(){
+				var that = this;
+				var style = that.AppStyle;
 				localStorage.setItem('appStyle',style);
 				that.$store.commit('setStyle', style);
-				console.log(that.$store.state.AppStyle);
+				var curStyle = "blue";
+				if(style.indexOf("blue")!=-1){
+					curStyle = "blue";
+				}
+				if(style.indexOf("pink")!=-1){
+					curStyle = "pink";
+				}
+				if(style.indexOf("orange")!=-1){
+					curStyle = "orange";
+				}
+				if(style.indexOf("green")!=-1){
+					curStyle = "green";
+				}
+				uni.redirectTo({
+					url: '/pages/home/index'
+				})
+				
 			}
 
-		},
+		}
+		
 	}
 </script>
 

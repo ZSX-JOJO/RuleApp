@@ -25,10 +25,16 @@
 					<view class="sendcode text-gray" v-if="!show">{{ times }}s</view>
 				</view>
 				<view class="cu-form-group">
-					<input name="input" v-model="password" type="password" placeholder="输入新密码"></input>
+					<input name="input" placeholder="请输入新密码" type="password" v-if="!pwdShow" v-model="password"></input>
+					<input name="input" placeholder="请输入新密码" type="text" v-if="pwdShow" v-model="password"></input>
+					<text class="active cuIcon-attentionfill text-black" @tap="pwdShow=!pwdShow" v-if="password!=''&&pwdShow"></text>
+					<text class="active cuIcon-attentionfill text-gray" @tap="pwdShow=!pwdShow" v-if="password!=''&&!pwdShow"></text>
 				</view>
 				<view class="cu-form-group">
-					<input name="input" v-model="repassword" type="password" placeholder="再次输入密码"></input>
+					<input name="input" placeholder="请再次输入新密码" type="password" v-if="!rePwdShow" v-model="repassword"></input>
+					<input name="input" placeholder="请再次输入新密码" type="text" v-if="rePwdShow" v-model="repassword"></input>
+					<text class="active cuIcon-attentionfill text-black" @tap="rePwdShow=!rePwdShow" v-if="repassword!=''&&rePwdShow"></text>
+					<text class="active cuIcon-attentionfill text-gray" @tap="rePwdShow=!rePwdShow" v-if="repassword!=''&&!rePwdShow"></text>
 				</view>
 				<view class="user-btn flex flex-direction">
 					<button class="cu-btn bg-blue margin-tb-sm lg" @tap="userFoget">确认修改</button>
@@ -46,7 +52,7 @@
 				StatusBar: this.StatusBar,
 				CustomBar: this.CustomBar,
 				NavBar:this.StatusBar +  this.CustomBar,
-			AppStyle:this.$store.state.AppStyle,
+				AppStyle:this.$store.state.AppStyle,
 				
 				times: 60,
 				show:true,
@@ -56,6 +62,9 @@
 				password:"",
 				repassword:"",
 				
+				
+				pwdShow:false,
+				rePwdShow:false
 			}
 		},
 		onPullDownRefresh(){

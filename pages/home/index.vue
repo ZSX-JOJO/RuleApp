@@ -44,7 +44,7 @@
 				    :key="index">
 				
 				<view class="tabbar-item" @tap="tabbarChange(item.type,index)">
-				    <image class="item-img" :src="item.icon_a+'.png'" v-if="curType == item.type"></image>
+				    <image class="item-img" :src="item.icon_a+curStyle+'.png'" v-if="curType == item.type"></image>
 				    <image class="item-img" :src="item.icon" v-else></image>
 				    <view class="item-name" :class="{'tabbarActive': curType == item.type}" v-if="item.text">{{item.text}}</view>
 				</view>
@@ -128,23 +128,23 @@ export default {
             list: [{
                     text: '首页',  
                     icon: '/static/tabbar/home.png',  //未选中图标
-                    icon_a: '/static/tabbar/home_cur',  //选中图片
+                    icon_a: '/static/tabbar/home_',  //选中图片
                     type: "home",
                 },{
                     text: '发现',
                     icon: '/static/tabbar/find.png',
-                    icon_a: '/static/tabbar/find_cur',
+                    icon_a: '/static/tabbar/find_',
 					type: "find",
                 }
                 ,{
                     text: '广场',
                     icon: '/static/tabbar/square.png',
-                    icon_a: '/static/tabbar/square_cur',
+                    icon_a: '/static/tabbar/square_',
                     type: 'square',
                 },{
                     text: '我的',
                     icon: '/static/tabbar/user.png',
-                    icon_a: '/static/tabbar/user_cur',
+                    icon_a: '/static/tabbar/user_',
                     type: "user",
                 },
             ],
@@ -298,6 +298,33 @@ export default {
 				that.unreadNum();
 			}
 		}, 5000);
+		if(localStorage.getItem('appStyle')){
+			var appStyle = localStorage.getItem('appStyle');
+			
+			var curStyle = "blue";
+			that.curStyle = "blue";
+			if(appStyle.indexOf("blue")!=-1){
+				curStyle = "blue";
+				that.curStyle = "blue";
+			}
+			if(appStyle.indexOf("pink")!=-1){
+				curStyle = "pink";
+				that.curStyle = "pink";
+			}
+			if(appStyle.indexOf("orange")!=-1){
+				curStyle = "orange";
+				that.curStyle = "orange";
+			}
+			if(appStyle.indexOf("green")!=-1){
+				curStyle = "green";
+				that.curStyle = "green";
+			}
+			// that.$store.state.AppStyle = that.appStyle;
+			that.$store.commit('setStyle', appStyle);
+			console.log(that.$store.state.AppStyle)
+			
+			
+		}
 		 
 		 // setTimeout(function() {
 		 // 	uni.$emit('onShow', 0);

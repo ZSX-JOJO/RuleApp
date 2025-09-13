@@ -4,14 +4,16 @@ RuleApp，一款功能全面，用户交互良好的文章内容社区程序，�
 
 本程序不包含任何按收费项目，功能全部开放且完全开源免费（包括后端接口）。开源不易，需要赞助提供动力【手动狗头】。
 
-
 [赞助地址](https://www.ruletree.club/sponsor.html)
 
 
 ## 安装步骤
 
-RuleApp依赖后端接口RuleApi运行，不过不用担心，我已经提供了完整的安装文档，可以认真阅读所有的步骤完成安装。
+RuleApp依赖后端接口RuleApi运行，不过不用担心，我已经提供了完整的安装文档，可以认真阅读所有的步骤完成安装。如果遇到问题，可以来交流群求助。
 [RuleProject全项目安装教程](https://www.yuque.com/buxia97/ruleproject)
+
+当前为免费开源版本（前后端均开源），可放心使用，满足基本的社区付费系统需求，如需功能更强大的系统，或者希望开发者更加努力奋斗，可赞助获得商业版。
+[赞助升级PRO](https://www.yuque.com/buxia97/ruleproject/xychnh7yxu2o4ere)
 
 
 ## 基础功能

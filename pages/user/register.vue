@@ -1,5 +1,5 @@
 <template>
-	<view class="user" :class="AppStyle">
+	<view class="user" :class="$store.state.AppStyle">
 		<view class="header" :style="[{height:CustomBar + 'px'}]">
 			<view class="cu-bar bg-white" :style="{'height': CustomBar + 'px','padding-top':StatusBar + 'px'}">
 				<view class="action" @tap="back">
@@ -28,10 +28,16 @@
 					<view class="sendcode text-gray" v-if="!show">{{ times }}s</view>
 				</view>
 				<view class="cu-form-group">
-					<input name="input" v-model="password" type="password" placeholder="请输入密码"></input>
+					<input name="input" placeholder="请输入密码" type="password" v-if="!pwdShow" v-model="password"></input>
+					<input name="input" placeholder="请输入密码" type="text" v-if="pwdShow" v-model="password"></input>
+					<text class="active cuIcon-attentionfill text-black" @tap="pwdShow=!pwdShow" v-if="password!=''&&pwdShow"></text>
+					<text class="active cuIcon-attentionfill text-gray" @tap="pwdShow=!pwdShow" v-if="password!=''&&!pwdShow"></text>
 				</view>
 				<view class="cu-form-group">
-					<input name="input" v-model="repassword" type="password" placeholder="再次输入密码"></input>
+					<input name="input" placeholder="再次输入密码" type="password" v-if="!rePwdShow" v-model="repassword"></input>
+					<input name="input" placeholder="再次输入密码" type="text" v-if="rePwdShow" v-model="repassword"></input>
+					<text class="active cuIcon-attentionfill text-black" @tap="rePwdShow=!rePwdShow" v-if="repassword!=''&&rePwdShow"></text>
+					<text class="active cuIcon-attentionfill text-gray" @tap="rePwdShow=!rePwdShow" v-if="repassword!=''&&!rePwdShow"></text>
 				</view>
 				<view class="cu-form-group" v-if="isInvite==1">
 					<input name="input" v-model="inviteCode" type="text" placeholder="请输入邀请码(必填)"></input>
@@ -66,6 +72,9 @@
 				isEmail:1,
 				isInvite:0,
 				inviteCode:"",
+				
+				pwdShow:false,
+				rePwdShow:false
 				
 			}
 		},

@@ -22,7 +22,10 @@
 					<input name="input" placeholder="用户名" v-model="userName"></input>
 				</view>
 				<view class="cu-form-group">
-					<input name="input" placeholder="用户密码" type="password" v-model="password"></input>
+					<input name="input" placeholder="用户密码" type="password" v-if="!pwdShow" v-model="password"></input>
+					<input name="input" placeholder="用户密码" type="text" v-if="pwdShow" v-model="password"></input>
+					<text class="active cuIcon-attentionfill text-black" @tap="pwdShow=!pwdShow" v-if="password!=''&&pwdShow"></text>
+					<text class="active cuIcon-attentionfill text-gray" @tap="pwdShow=!pwdShow" v-if="password!=''&&!pwdShow"></text>
 				</view>
 				<view class="user-btn flex flex-direction">
 					<button class="cu-btn bg-blue margin-tb-sm lg" @tap="login">立即登录</button>
@@ -78,6 +81,8 @@
 			AppStyle:this.$store.state.AppStyle,
 				userName:"",
 				password:"",
+				
+				pwdShow:false,
 				
 			}
 		},

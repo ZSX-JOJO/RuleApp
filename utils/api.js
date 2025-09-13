@@ -93,6 +93,9 @@ module.exports = {
 	getAppKey(){
 		return appKey;
 	},
+	GetStyleIndex(){
+		return styleIndex;
+	},
 	getCurrencyName(){
 		var currencyName = "积分";
 		if(localStorage.getItem('AppInfo')){
